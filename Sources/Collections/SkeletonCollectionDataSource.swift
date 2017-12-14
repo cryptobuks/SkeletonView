@@ -23,7 +23,7 @@ class SkeletonCollectionDataSource: NSObject {
 }
 
 // MARK: - UITableViewDataSource
-extension SkeletonCollectionDataSource: UITableViewDataSource {
+extension SkeletonCollectionDataSource: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return originalTableViewDataSource?.numSections(in:tableView) ?? 0
@@ -37,6 +37,18 @@ extension SkeletonCollectionDataSource: UITableViewDataSource {
         let cellIdentifier = originalTableViewDataSource?.collectionSkeletonView(tableView, cellIdenfierForRowAt: indexPath) ?? ""
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return originalTableViewDataSource?.collectionSkeletonView(tableView, viewForHeaderInSection: section)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return originalTableViewDataSource?.collectionSkeletonView(tableView, hightForHeaderInSection: section) ?? 0.0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return originalTableViewDataSource?.collectionSkeletonView(tableView, hightForCellAtIndexPath: indexPath) ?? 0.0
     }
 }
 

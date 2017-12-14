@@ -39,7 +39,6 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        view.showAnimatedSkeleton()
     }
 
     @IBAction func changeAnimated(_ sender: Any) {
@@ -140,10 +139,37 @@ extension ViewController: SkeletonTableViewDataSource {
         return "CellIdentifier"
     }
     
+    func collectionSkeletonView(_ skeletonView: UITableView, hightForCellAtIndexPath indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, hightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = skeletonView.dequeueReusableCell(withIdentifier: "header")
+        view?.subviews.forEach { $0.isSkeletonable = true }
+        return view
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier", for: indexPath) as! Cell
         cell.label1.text = "cell => \(indexPath.row)"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = tableView.dequeueReusableCell(withIdentifier: "header")
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }
 

@@ -17,3 +17,7 @@ class Cell: UITableViewCell {
         super.awakeFromNib()
     }
 }
+
+class Header: UITableViewCell {
+    @IBOutlet weak var label: UILabel!
+}

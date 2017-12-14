@@ -50,6 +50,7 @@ extension UITableView: CollectionSkeleton {
         set {
             objc_setAssociatedObject(self, &AssociatedKeys.dummyDataSource, newValue, AssociationPolicy.retain.objc)
             self.dataSource = newValue
+            self.delegate = newValue
         }
     }
     
@@ -58,14 +59,16 @@ extension UITableView: CollectionSkeleton {
               !(originalDataSource is SkeletonCollectionDataSource)
             else { return }
         let dataSource = SkeletonCollectionDataSource(tableViewDataSource: originalDataSource)
-        self.skeletonDataSource = dataSource
+        skeletonDataSource = dataSource
         reloadData()
+        layoutSubviews()
     }
     
     func removeDummyDataSource(reloadAfter: Bool) {
         guard let dataSource = self.dataSource as? SkeletonCollectionDataSource else { return }
         self.skeletonDataSource = nil
         self.dataSource = dataSource.originalTableViewDataSource
+        self.delegate = dataSource.originalTableViewDataSource
         if reloadAfter { self.reloadData() }
     }
 }

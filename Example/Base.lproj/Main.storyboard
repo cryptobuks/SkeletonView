@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -115,33 +116,32 @@
                                     <constraint firstItem="GFE-Wp-I0f" firstAttribute="top" secondItem="XgY-1a-UGc" secondAttribute="top" constant="10" id="zDP-1B-XvM"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UCB-SP-lQk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="79" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="UCB-SP-lQk">
                                 <rect key="frame" x="0.0" y="410" width="375" height="257"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="separatorColor" red="0.1061807256" green="0.84678786989999999" blue="0.031482450150000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellIdentifier" rowHeight="120" id="2dN-Bd-tdy" customClass="Cell" customModule="SkeletonViewExample" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellIdentifier" rowHeight="79" id="2dN-Bd-tdy" customClass="Cell" customModule="SkeletonViewExample" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2dN-Bd-tdy" id="7IN-F3-Mr6">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oiE-tt-nc2">
-                                                    <rect key="frame" x="15" y="18" width="82" height="82"/>
+                                                    <rect key="frame" x="15" y="18" width="59.5" height="59.5"/>
                                                     <color key="backgroundColor" red="0.56078431370000004" green="0.59607843140000005" blue="0.7843137255" alpha="0.90709546230000004" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="82" id="4j0-PU-CmN"/>
-                                                        <constraint firstAttribute="height" constant="82" id="iqE-Lc-FOj"/>
+                                                        <constraint firstAttribute="width" secondItem="oiE-tt-nc2" secondAttribute="height" id="Tuj-xx-x2B"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VhU-1t-AaI">
-                                                    <rect key="frame" x="118" y="29" width="237" height="21"/>
+                                                    <rect key="frame" x="95.5" y="29" width="259.5" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="71" id="HRL-cI-ieC"/>
+                                                        <constraint firstAttribute="height" constant="20" id="HRL-cI-ieC"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -155,6 +155,7 @@
                                                 <constraint firstItem="oiE-tt-nc2" firstAttribute="leading" secondItem="7IN-F3-Mr6" secondAttribute="leadingMargin" id="1be-ak-AH1"/>
                                                 <constraint firstItem="oiE-tt-nc2" firstAttribute="top" secondItem="7IN-F3-Mr6" secondAttribute="topMargin" constant="7" id="EKn-ST-LDX"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="VhU-1t-AaI" secondAttribute="trailing" constant="5" id="I7C-Bq-mfK"/>
+                                                <constraint firstItem="oiE-tt-nc2" firstAttribute="height" secondItem="7IN-F3-Mr6" secondAttribute="height" multiplier="0.75" id="IHp-9d-LtX"/>
                                                 <constraint firstItem="VhU-1t-AaI" firstAttribute="leading" secondItem="oiE-tt-nc2" secondAttribute="trailing" constant="21" id="Ojr-Kz-1k6"/>
                                                 <constraint firstItem="VhU-1t-AaI" firstAttribute="top" secondItem="7IN-F3-Mr6" secondAttribute="topMargin" constant="18" id="ZW6-JY-S4c"/>
                                             </constraints>
@@ -170,12 +171,52 @@
                                             <outlet property="label1" destination="VhU-1t-AaI" id="kUW-HV-KrD"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="header" rowHeight="79" id="j49-sG-CJJ" customClass="Header" customModule="SkeletonViewExample" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="134.5" width="375" height="79"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j49-sG-CJJ" id="dJg-Jb-sPL">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOn-QC-HOL">
+                                                    <rect key="frame" x="34" y="11" width="321" height="57"/>
+                                                    <color key="backgroundColor" red="0.64895304570000001" green="0.64895304570000001" blue="0.64895304570000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="71" id="LN5-gI-O6N"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="1" green="0.75366350299999996" blue="0.90745055740000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="SOn-QC-HOL" firstAttribute="leading" secondItem="dJg-Jb-sPL" secondAttribute="leadingMargin" constant="19" id="1xP-ak-k1x"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="SOn-QC-HOL" secondAttribute="bottom" id="Gsh-mh-CHe"/>
+                                                <constraint firstItem="SOn-QC-HOL" firstAttribute="top" secondItem="dJg-Jb-sPL" secondAttribute="topMargin" id="UD7-7l-jEs"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="SOn-QC-HOL" secondAttribute="trailing" constant="5" id="aYG-T4-arm"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="label" destination="SOn-QC-HOL" id="CAd-cQ-ZU1"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="Hxi-nC-gbY"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="DZK-eC-OGV"/>
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9K-jU-100">
@@ -229,7 +270,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label with baground" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ba-QI-xbo">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label with baground" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ba-QI-xbo">
                                                 <rect key="frame" x="0.0" y="62" width="111" height="31"/>
                                                 <color key="backgroundColor" red="0.71172768320000002" green="0.95825954670000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>

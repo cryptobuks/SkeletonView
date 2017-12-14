@@ -91,11 +91,11 @@ extension UIView {
     }
 }
 
-extension UITableView {
-    override var subviewsSkeletonables: [UIView] {
-        return visibleCells.filter { $0.isSkeletonable }
-    }
-}
+//extension UITableView {
+//    override var subviewsSkeletonables: [UIView] {
+//        return visibleCells.filter { $0.isSkeletonable }
+//    }
+//}
 
 extension UITableViewCell {
     override var subviewsSkeletonables: [UIView] {
