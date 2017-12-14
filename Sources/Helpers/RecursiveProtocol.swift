@@ -14,16 +14,17 @@ typealias RecursiveBlock<T> = (T) -> Void
 //MARK: Recursive
 protocol Recursive {
     associatedtype Element 
-    func recursiveSearch(inArray array:[Element], leafBlock: VoidBlock, recursiveBlock: RecursiveBlock<Element>)
+    func recursiveSearch(inArray array:[Element], leafBlock: VoidBlock, recursiveBlock: RecursiveBlock<Element>, containerBlock: (() -> Void)?)
 }
 
 extension Recursive {
-    func recursiveSearch(inArray array:[Element], leafBlock: VoidBlock, recursiveBlock: RecursiveBlock<Element>) {
+    func recursiveSearch(inArray array:[Element], leafBlock: VoidBlock, recursiveBlock: RecursiveBlock<Element>, containerBlock: (() -> Void)? = nil) {
         guard array.count > 0 else {
             leafBlock()
             return
         }
         array.forEach { recursiveBlock($0) }
+        containerBlock?()
     }
 }
 

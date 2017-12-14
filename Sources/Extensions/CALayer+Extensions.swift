@@ -11,18 +11,18 @@ import UIKit
 extension CALayer {
     @objc func tint(withColors colors: [UIColor]) {
         recursiveSearch(inArray: skeletonSublayers,
-                        leafBlock: { backgroundColor = colors.first?.cgColor }) {
+                        leafBlock: { backgroundColor = colors.first?.cgColor }, recursiveBlock: {
                             $0.tint(withColors: colors)
-        }
+        })
     }
 }
 
 extension CAGradientLayer {
     override func tint(withColors colors: [UIColor]) {
         recursiveSearch(inArray: skeletonSublayers,
-                        leafBlock: { self.colors = colors.map { $0.cgColor } }) {
+                        leafBlock: { self.colors = colors.map { $0.cgColor } }, recursiveBlock: {
                             $0.tint(withColors: colors)
-        }
+        })
     }
 }
 
@@ -92,15 +92,15 @@ public extension CALayer {
     
     func playAnimation(_ anim: SkeletonLayerAnimation, key: String) {
         recursiveSearch(inArray: skeletonSublayers,
-                        leafBlock: { add(anim(self), forKey: key) }) {
+                        leafBlock: { add(anim(self), forKey: key) }, recursiveBlock: {
                             $0.playAnimation(anim, key: key)
-        }
+        })
     }
     
     func stopAnimation(forKey key: String) {
         recursiveSearch(inArray: skeletonSublayers,
-                        leafBlock: { removeAnimation(forKey: key) }) {
+                        leafBlock: { removeAnimation(forKey: key) }, recursiveBlock: {
                             $0.stopAnimation(forKey: key)
-        }
+        })
     }
 }

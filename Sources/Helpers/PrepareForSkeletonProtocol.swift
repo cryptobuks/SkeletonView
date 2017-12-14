@@ -33,8 +33,13 @@ extension UILabel: PrepareForSkeleton {
     }
     
     func recoverViewState() {
-        text = recoverLabelText
-        backgroundColor = recoverBackgroundColor
+        if text == nil {
+            text = recoverLabelText
+        }
+        
+        if backgroundColor == nil {
+            backgroundColor = recoverBackgroundColor
+        }
     }
     
     var recoverLabelText: String? {

@@ -27,8 +27,6 @@ public extension UIView {
     }
     
     func hideSkeleton(reloadDataAfter reload: Bool = true) {
-        removeDummyDataSourceIfNeeded(reloadAfter: reload)
-        isUserInteractionEnabled = true
         recursiveSearch(inArray: subviewsSkeletonables,
                         leafBlock: {
                             (self as? PrepareForSkeleton)?.recoverViewState()
@@ -36,21 +34,24 @@ public extension UIView {
                         },
                         recursiveBlock: {
                             $0.hideSkeleton(reloadDataAfter: reload)
-                        })
+        }, containerBlock:  { [weak self] in
+            self?.removeDummyDataSourceIfNeeded(reloadAfter: reload)
+            self?.isUserInteractionEnabled = true
+        })
     }
     
     func startSkeletonAnimation(_ anim: SkeletonLayerAnimation? = nil) {
         recursiveSearch(inArray: subviewsSkeletonables,
-                        leafBlock:  startSkeletonLayerAnimationBlock(anim)) {
+                        leafBlock:  startSkeletonLayerAnimationBlock(anim), recursiveBlock:  {
                             $0.startSkeletonAnimation(anim)
-                        }
+                        })
     }
 
     func stopSkeletonAnimation() {
         recursiveSearch(inArray: subviewsSkeletonables,
-                        leafBlock: stopSkeletonLayerAnimationBlock) {
+                        leafBlock: stopSkeletonLayerAnimationBlock, recursiveBlock: {
                             $0.stopSkeletonAnimation()
-        }
+        })
     }
 }
 
@@ -64,9 +65,9 @@ extension UIView {
                             isUserInteractionEnabled = false
                             (self as? PrepareForSkeleton)?.prepareViewForSkeleton()
                             addSkeletonLayer(withType: type, usingColors: colors, animated: animated, animation: animation)
-                        }) {
+                        }, recursiveBlock: {
                             $0.showSkeleton(withType: type, usingColors: colors, animated: animated, animation: animation)
-                        }
+                        })
     }
     
     fileprivate func startSkeletonLayerAnimationBlock(_ anim: SkeletonLayerAnimation? = nil) -> VoidBlock {
